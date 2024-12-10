@@ -26,8 +26,13 @@ class UserFactory extends Factory
         return [
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
+            'role' => 'user',
+            'provider_id' => Str::random(10),
+            'provider_name' => 'github',
+            'provider_token' => Str::random(10),
+            'provider_refresh_token' => Str::random(10),
+            'provider_avatar' => 'https://api.multiavatar.com/' . Str::random(10) . '.png',
             'remember_token' => Str::random(10),
         ];
     }
