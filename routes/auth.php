@@ -20,10 +20,10 @@ Route::middleware('guest')->group(function () {
     Volt::route('reset-password/{token}', 'pages.auth.reset-password')
         ->name('password.reset');
 
-    Route::get('auth/{driver}/redirect', [ProviderController::class, 'redirect'])
+    Route::get('{driver}/redirect', [ProviderController::class, 'redirect'])
         ->name('socialite.redirect');
 
-    Route::get('auth/{driver}/callback', [ProviderController::class, 'callback']);
+    Route::get('{driver}/callback', [ProviderController::class, 'callback']);
 });
 
 Route::middleware('auth')->group(function () {
